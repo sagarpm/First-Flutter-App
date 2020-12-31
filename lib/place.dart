@@ -49,7 +49,7 @@ final List<Place> places = <Place>[
   Place(name: 'Sanchi Stupa',
     state: 'Madhya Pradesh',
     rating: 0.0,
-    description: 'Sanchi Stupa is one of the great buddhist complex. It is one of the oldest stone structures in India and a very important archaeological site.',
+    description: 'Sanchi Stupa is one of the great buddhist complex. It is one of the oldest stone structures in India and a very important archaeological site. Located about 50 kms from Bhopal',
     image: 'images/sanchi_stupa.jpg',
     card_image: 'images/sanchi_stupa_card.jpg',
   ),
