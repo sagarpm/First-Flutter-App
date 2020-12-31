@@ -4,6 +4,8 @@ A new Flutter application.
 I love travelling and I wished to make an application that shows all the amazing places I can visit.
 This application is one step closer to realising my dream, there is a lot of work to do on this application but I have laid the foundation.
 
+All the images I have used do not belong to me, they have been downloaded from wikipedia or google images.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
