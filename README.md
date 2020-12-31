@@ -1,6 +1,8 @@
 # unesco_heritage
 
 A new Flutter application.
+I love travelling and I wished to make an application that shows all the amazing places I can visit.
+This application is one step closer to realising my dream, there is a lot of work to do on this application but I have laid the foundation.
 
 ## Getting Started
 
