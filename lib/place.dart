@@ -1,3 +1,5 @@
+//import 'package:flutter/cupertino.dart';
+
 class Place
 {
   final String name;
@@ -8,9 +10,26 @@ class Place
   final String card_image;
 
   Place({this.name, this.state, this.rating, this.description, this.image, this.card_image});
+
+  Map<String, dynamic> toMap() {
+    return{
+      'name': name,
+      'state': state,
+      'rating': rating,
+      'description': description,
+      'image': image,
+      'card_image': card_image,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'Place{name: $name, state: $state, rating: $rating, description: $description, image: $image, card_image: $card_image}';
+  }
+
 }
 
-final List<Place> places = <Place>[
+/*final List<Place> places = <Place>[
   Place(name: 'Group of Monuments, Hampi',
       state: 'Karnataka',
       rating: 0.0,
@@ -53,4 +72,4 @@ final List<Place> places = <Place>[
     image: 'images/sanchi_stupa.jpg',
     card_image: 'images/sanchi_stupa_card.jpg',
   ),
-];
+];*/
