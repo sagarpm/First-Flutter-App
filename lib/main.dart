@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -146,25 +147,106 @@ class GridCard extends StatelessWidget
   }
 }
 
-class PlaceDetails extends StatelessWidget
+class PlaceDetails extends StatefulWidget
 {
   final Place place;
 
   const PlaceDetails({Key key, this.place}) : super(key: key);
 
   @override
+  _PlaceDetailsState createState() => _PlaceDetailsState();
+}
+
+class _PlaceDetailsState extends State<PlaceDetails> {
+  int starRate = 0;
+  /*bool star_1 = false;
+  bool star_2 = false;
+  bool star_3 = false;
+  bool star_4 = false;
+  bool star_5 = false;*/
+
+  void handleStarPress(int starNum)
+  {
+    setState(() {
+      starRate=starNum;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(place.name),),
+      appBar: AppBar(title: AutoSizeText(widget.place.name, maxLines: 1, textAlign: TextAlign.center,),),
       body: Center(
         child: Container(
-          child: Column(
+          //color: Colors.orange,
+          child: ListView(
             children: [
               Container(
-                child: Image.asset(place.image, fit: BoxFit.cover,),
+                child: Image.asset(widget.place.image, fit: BoxFit.cover,),
+              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 20.0,)),//try adding container in child here.
+              Container(
+                child: Text(widget.place.state, textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic),),
               ),
               Container(
-                child: Text(place.description, textAlign: TextAlign.center,),
+                child: Text('${widget.place.rating}', textAlign: TextAlign.center,style: TextStyle(fontStyle: FontStyle.italic),),
+              ),
+              Container(
+                //color: Colors.deepPurple,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        icon: 1 <= starRate ? Icon(Icons.star, color: Colors.yellowAccent,) : Icon(Icons.star_outline, color: Colors.yellowAccent,),
+                        onPressed: () => handleStarPress(1),
+                    ),
+                    IconButton(
+                        icon: 2 <= starRate ? Icon(Icons.star, color: Colors.yellowAccent,) : Icon(Icons.star_outline, color: Colors.yellowAccent,),
+                        onPressed: () => handleStarPress(2),
+                    ),
+                    IconButton(
+                        icon: 3 <= starRate ? Icon(Icons.star, color: Colors.yellowAccent,) : Icon(Icons.star_outline, color: Colors.yellowAccent,),
+                        onPressed: () => handleStarPress(3),
+                    ),
+                    IconButton(
+                        icon: 4 <= starRate ? Icon(Icons.star, color: Colors.yellowAccent,) : Icon(Icons.star_outline, color: Colors.yellowAccent,),
+                        onPressed: () => handleStarPress(4),
+                    ),
+                    IconButton(
+                        icon: 5 <= starRate ? Icon(Icons.star, color: Colors.yellowAccent,) : Icon(Icons.star_outline, color: Colors.yellowAccent,),
+                        onPressed: () => handleStarPress(5),
+                    ),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
+                    Container(
+                      child: ElevatedButton(
+                        child: Text('Reset'),
+                        onPressed: () => handleStarPress(0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 50.0,
+                width: 135.0,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                child: RaisedButton(
+                  //padding: EdgeInsets.symmetric(horizontal: 50.0),
+                  color: Colors.deepPurple,
+                  onPressed: () => handleStarPress(0),
+                  splashColor: Colors.white30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 6.0)),
+                      Text('Route', style: TextStyle(color: Colors.white),),
+                      IconButton(icon: Icon(Icons.navigation, color: Colors.white,),)
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                child: Text(widget.place.description, textAlign: TextAlign.center,),
               )
             ],
           ),
